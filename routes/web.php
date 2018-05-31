@@ -10,9 +10,17 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use Illuminate\Http\Request;
 
-// Route::get('/', function () {
-//     return view('welcome');
+Route::get('/', function () {
+    return view('welcome');
+});
+ Route::post('/','ViewFilleController@store');
+ Route::post('/','ViewFilleController@updateFile');
+
+
+// Route::post('/', function (Request $request) {
+//     $path = $request->file('photo')->store('photos');
+
+//     dd($path);
 // });
-Route::get('/','UploadFileController@index');
-Route::post('/','UploadFileController@showUploadFile');
