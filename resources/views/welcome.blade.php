@@ -62,7 +62,7 @@
         }
 
         .m-b-md {
-            margin-bottom: 200px;
+            /* margin-bottom: 200px; */
         }
     </style>
 </head>
@@ -71,12 +71,10 @@
     <div class="content">
         <div class="title m-b-md">
             EDL Parser
-            <?php
-         echo Form::open(array('url' => '/','files'=>'true'));
-         echo Form::file('image');
-         echo Form::submit('Upload File');
-         echo Form::close();
-            ?>
+            {!! Form::open(['url' => '/', 'files' => true]) !!}
+            {!! Form::file('file'); !!}
+            {!! Form::submit('Upload File'); !!}
+            {!! Form::close() !!}
         </div>
     </div>
     <!-- <div class="flex-center position-ref full-height">

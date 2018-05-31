@@ -11,7 +11,7 @@ class UploadFileController extends Controller {
       return view('welcome');
    }
    public function showUploadFile(Request $request){
-      $file = $request->file('image');
+      $file = $request->file('txt');
    
       //Display File Name
       echo 'File Name: '.$file->getClientOriginalName();
@@ -21,19 +21,8 @@ class UploadFileController extends Controller {
       echo 'File Extension: '.$file->getClientOriginalExtension();
       echo '<br>';
    
-      //Display File Real Path
-      echo 'File Real Path: '.$file->getRealPath();
-      echo '<br>';
-   
-      //Display File Size
-      echo 'File Size: '.$file->getSize();
-      echo '<br>';
-   
-      //Display File Mime Type
-      echo 'File Mime Type: '.$file->getMimeType();
-   
-      //Move Uploaded File
-      $destinationPath = 'uploads';
-      $file->move($destinationPath,$file->getClientOriginalName());
-   }
+//       //Move Uploaded File
+//       $destinationPath = 'uploads';
+//       $file->move($destinationPath,$file->getClientOriginalName());
+     }
 }
