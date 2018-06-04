@@ -56,12 +56,16 @@ foreach ($file as $row) {
         if ($substr !== 00) {
             $col6 = substr($col6, 0, -3);
             //add 1 to the last character
-
+            $i = substr($col6, -2);
+            //if last two characters !contain 0, remove last three characters and add 1 to the last character
+            //...else remove last three characters
+            $col6 = substr($col6, 0, -2);
+            $i++;
+            $col6 .= $i;
         } else {
             $col6 = substr($col6, 0, -3);
         }
-        //if last two characters !contain 0, remove last three characters and add 1 to the last character
-        //...else remove last three characters
+        
     echo '<tr><th>' . $col3 . '</th><th>' . $col3 . '</th><th>' . $col2 . '</th><th>' . $col3 . '</th><th>' . $col6 . '</th></tr>';
     }
 }
