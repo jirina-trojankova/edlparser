@@ -7,9 +7,10 @@
     <title>Parser_3</title>
     <style>
         table {
-            font-family: arial, sans-serif;
+            font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
             border-collapse: collapse;
             width: 100%;
+            /* font-weight: bold; */
         }
         
         td, th {
@@ -36,14 +37,12 @@ ini_set('display_errors', 1);
 // ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-// readfile('sample1.txt');
 $file = file('sample1.txt');
 $unmuted = 'Unmuted';
-
 foreach ($file as $row) {
 //if row contains word unmuted it means it should be listed
     if (strpos ($row, $unmuted) !== false ) {
-    echo '<tr><th>' . $row . '</th></tr>';
+    echo '<tr><th>' . $row . '</th><th>' . $row . '</th><th>' . $row . '</th><th>' . $row . '</th></tr>';
     }
 }
 ?>
