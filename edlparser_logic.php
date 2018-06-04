@@ -42,7 +42,7 @@ $file = file('sample1.txt');
 $unmuted = 'Unmuted';
 foreach ($file as $row) {
 //if row contains word unmuted it means it should be listed
-    if (strpos ($row, $unmuted) !== false ) {
+    if ((strpos ($row, $unmuted) !== false) && (substr($row, 0, 1) !== "2")) {
         //replace several whitespaces by one
         $string = preg_replace('/\s+/', ' ', $row);
         //divides row into columns
