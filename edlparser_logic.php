@@ -66,6 +66,15 @@ foreach ($file as $row) {
             $col6 = substr($col6, 0, -3);
         }
         
+        if (strlen($col6) !== 5) {
+            $col6 = substr_replace($col6, '0',3 ,0);
+        }
+
+
+            
+
+        
+        //if string !contains five characters, ad zero before last character 
     echo '<tr><th>' . $col3 . '</th><th>' . $col3 . '</th><th>' . $col2 . '</th><th>' . $col3 . '</th><th>' . $col6 . '</th></tr>';
     }
 }
