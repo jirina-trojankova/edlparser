@@ -47,6 +47,7 @@ foreach ($file as $row) {
         $string = preg_replace('/\s+/', ' ', $row);
         //divides row into columns
         list($col1, $col2, $col3, $col4, $col5, $col6, $col7) = explode(' ', $string);
+        $col3 = chop($col3, ".L");
     echo '<tr><th>' . $col3 . '</th><th>' . $col3 . '</th><th>' . $col2 . '</th><th>' . $col3 . '</th><th>' . $col6 . '</th></tr>';
     }
 }
