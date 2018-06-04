@@ -47,7 +47,13 @@ foreach ($file as $row) {
         $string = preg_replace('/\s+/', ' ', $row);
         //divides row into columns
         list($col1, $col2, $col3, $col4, $col5, $col6, $col7) = explode(' ', $string);
+        //removes .L
         $col3 = chop($col3, ".L");
+        //removes hours
+        $col6 = substr($col6, 3);
+        // $col6 = ceil($col6);
+        //if last two characters !contain 0, remove last three characters and add 1 to the last character
+        //...else remove last three characters
     echo '<tr><th>' . $col3 . '</th><th>' . $col3 . '</th><th>' . $col2 . '</th><th>' . $col3 . '</th><th>' . $col6 . '</th></tr>';
     }
 }
