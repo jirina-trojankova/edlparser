@@ -30,6 +30,7 @@
 <th>File name</th>
 <th>Album code</th>
 <th>Track no</th>
+<th>Track name</th>
 <th>Duration</th>
 </tr>
 <?php
@@ -42,7 +43,11 @@ $unmuted = 'Unmuted';
 foreach ($file as $row) {
 //if row contains word unmuted it means it should be listed
     if (strpos ($row, $unmuted) !== false ) {
-    echo '<tr><th>' . $row . '</th><th>' . $row . '</th><th>' . $row . '</th><th>' . $row . '</th></tr>';
+        //replace several whitespaces by one
+        $string = preg_replace('/\s+/', ' ', $row);
+        //divides row into columns
+        list($col1, $col2, $col3, $col4, $col5, $col6, $col7) = explode(' ', $string);
+    echo '<tr><th>' . $col3 . '</th><th>' . $col3 . '</th><th>' . $col2 . '</th><th>' . $col3 . '</th><th>' . $col6 . '</th></tr>';
     }
 }
 ?>
