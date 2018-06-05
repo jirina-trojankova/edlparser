@@ -12,17 +12,6 @@
 */
 use Illuminate\Http\Request;
 
-//  Route::get('/', function () {
-//      return view('welcome');
-//  });
-
 Route::get('/', 'UploadController@index');
 Route::post('store', 'UploadController@store');
 
-
-
-// Route::post('/process', function (Request $request) {
-//     $path = $request->file('photo')->store('photos');
-
-//     dd($path);
-// });

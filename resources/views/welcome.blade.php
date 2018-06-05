@@ -71,43 +71,23 @@
     <div class="content">
         <div class="title m-b-md">
             EDL Parser
-        </div> 
-            <form action="/store" enctype="multipart/form-data" method="POST">
-                <label for="photo">
-                    <input type="file" name="image" id="photo">
-                </label>
-            <input type="submit" value="Upload">
+        </div>
+        <div>
+            {!! Form::open(['url' => '/store', 'method' => 'post', 'files' => true]) !!} 
+            {!! Form::file('file'); !!} 
+            {!! Form::submit('Upload File'); !!} 
             {{ csrf_field() }}
-        </form> 
-            {{-- EDL Parser
-            {!! Form::open(['url' => '/', 'files' => true]) !!}
-            {!! Form::file('file'); !!}
-            {!! Form::submit('Upload File'); !!}
-            {!! Form::close() !!} --}}
+            {!! Form::close() !!}
         </div>
     </div>
-    <!-- <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    EDL Parser
-                    <form action="upload.php" method="post" enctype="multipart/form-data">
-                    <input type="file" name="fileToUpload" id="fileToUpload">
-                    <input type="submit" value="Upload File" name="submit">
-                    </form>
-                </div>
-            </div>
-        </div> -->
 </body>
 
 </html>
+
+
+{{-- <form action="/store" enctype="multipart/form-data" method="POST">
+        <input type="file" name="file" id="file">
+    </label>
+    <input type="submit" value="Upload"> 
+    {{ csrf_field() }}
+</form> --}}

@@ -13,9 +13,9 @@ class UploadController extends Controller
 
     public function store(request $request)
     {
-        if ($request->hasFile('image')){
-        $request->file('image');
-        return $request->image->store('public');
+        if ($request->hasFile('file')){
+        $request->file('file');
+        return $request->file->store('public');
         }else{
             return 'No file selected';
         }
