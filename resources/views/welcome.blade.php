@@ -74,9 +74,10 @@
         </div>
         <div>
             {!! Form::open(['url' => '/store', 'method' => 'post', 'files' => true]) !!} 
+            
             {!! Form::file('file'); !!} 
             {!! Form::submit('Upload File'); !!} 
-            {{ csrf_field() }}
+            {!! Form::token() !!}
             {!! Form::close() !!}
         </div>
     </div>
