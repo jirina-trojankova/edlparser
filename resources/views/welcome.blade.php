@@ -71,10 +71,19 @@
     <div class="content">
         <div class="title m-b-md">
             EDL Parser
+        </div> 
+            <form action="/store" enctype="multipart/form-data" method="POST">
+                <label for="photo">
+                    <input type="file" name="image" id="photo">
+                </label>
+            <input type="submit" value="Upload">
+            {{ csrf_field() }}
+        </form> 
+            {{-- EDL Parser
             {!! Form::open(['url' => '/', 'files' => true]) !!}
             {!! Form::file('file'); !!}
             {!! Form::submit('Upload File'); !!}
-            {!! Form::close() !!}
+            {!! Form::close() !!} --}}
         </div>
     </div>
     <!-- <div class="flex-center position-ref full-height">

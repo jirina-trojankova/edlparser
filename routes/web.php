@@ -12,14 +12,16 @@
 */
 use Illuminate\Http\Request;
 
-Route::get('/', function () {
-    return view('welcome');
-});
- Route::post('/','ViewFilleController@store');
- Route::post('/','ViewFilleController@updateFile');
+//  Route::get('/', function () {
+//      return view('welcome');
+//  });
+
+Route::get('/', 'UploadController@index');
+Route::post('store', 'UploadController@store');
 
 
-// Route::post('/', function (Request $request) {
+
+// Route::post('/process', function (Request $request) {
 //     $path = $request->file('photo')->store('photos');
 
 //     dd($path);

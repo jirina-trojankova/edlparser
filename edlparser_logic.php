@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,32 +8,34 @@
     <title>Parser_3</title>
     <style>
         table {
-            font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
             border-collapse: collapse;
             width: 100%;
             /* font-weight: bold; */
         }
-        
-        td, th {
+
+        td,
+        th {
             border: 1px solid #dddddd;
             text-align: left;
             padding: 4px;
         }
-        
+
         tr:nth-child(even) {
             background-color: #dddddd;
         }
-        </style>
+    </style>
 </head>
+
 <body>
-<table>
-<tr>
-<th>File name</th>
-<th>Album code</th>
-<th>Track no</th>
-<th>Track name</th>
-<th>Duration</th>
-</tr>
+    <table>
+        <tr>
+            <th>File name</th>
+            <th>Album code</th>
+            <th>Track no</th>
+            <th>Track name</th>
+            <th>Duration</th>
+        </tr>
 <?php
 ini_set('display_errors', 1);
 // ini_set('display_startup_errors', 1);
@@ -65,21 +68,16 @@ foreach ($file as $row) {
         } else {
             $col6 = substr($col6, 0, -3);
         }
-        
+        //corrects time format
         if (strlen($col6) !== 5) {
             $col6 = substr_replace($col6, '0',3 ,0);
         }
-
-
-            
-
-        
-        //if string !contains five characters, ad zero before last character 
     echo '<tr><th>' . $col3 . '</th><th>' . $col3 . '</th><th>' . $col2 . '</th><th>' . $col3 . '</th><th>' . $col6 . '</th></tr>';
     }
 }
 ?>
-</table>
+    </table>
 
 </body>
+
 </html>
