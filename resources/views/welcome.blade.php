@@ -87,11 +87,3 @@
 </body>
 
 </html>
-
-
-{{-- <form action="/store" enctype="multipart/form-data" method="POST">
-        <input type="file" name="file" id="file">
-    </label>
-    <input type="submit" value="Upload"> 
-    {{ csrf_field() }}
-</form> --}}

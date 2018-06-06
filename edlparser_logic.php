@@ -37,10 +37,7 @@
             <th>Duration</th>
         </tr>
 <?php
-ini_set('display_errors', 1);
-// ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
+function parse($path) {
 $file = file('sample1.txt');
 $unmuted = 'Unmuted';
 foreach ($file as $row) {
@@ -74,6 +71,7 @@ foreach ($file as $row) {
         }
     echo '<tr><th>' . $col3 . '</th><th>' . $col3 . '</th><th>' . $col2 . '</th><th>' . $col3 . '</th><th>' . $col6 . '</th></tr>';
     }
+}
 }
 ?>
     </table>
