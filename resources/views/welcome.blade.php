@@ -82,6 +82,7 @@
             {!! Form::token() !!}
             {!! Form::close() !!}
         </div>
+       
     </div>
 </body>
 

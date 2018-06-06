@@ -11,13 +11,17 @@ class UploadController extends Controller
         return view ('welcome');
     }
 
+    
+
     public function store(request $request)
     {
         if ($request->hasFile('file')){
         $request->file('file');
-        return $request->file->store('public');
+        $path = $request->file->store('public');
+        return view ('store',["path"=>$path]);
         }else{
             return 'No file selected';
         }
     }
+
 }
