@@ -10,6 +10,6 @@
     <div>
         {{-- <img src="{{ asset($uploaded) }}" alt=""> --}}
         <img src="{{ asset('public/'.$img) }}">    </div>
-        I am here
+        This is show.blade
 </body>
 </html>

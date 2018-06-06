@@ -71,6 +71,7 @@ foreach ($file as $row) {
 }
         ?>
     </table>    
+    This is store.blade
     <img src="{{ asset ('storage/' . $path) }}">
     <img src="{{ 'storage/' . $path }}">
 </body>
