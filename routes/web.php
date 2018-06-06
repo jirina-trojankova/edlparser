@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 
 Route::get('/', 'UploadController@index');
 Route::post('store', 'UploadController@store');
+Route::get('show', 'UploadController@show');
 // Route::post('store', function ($file)
 // {
 //     $path = storage_path('public/' . $file);
