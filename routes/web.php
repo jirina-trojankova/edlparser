@@ -14,21 +14,7 @@ use Illuminate\Http\Request;
 
 Route::get('/', 'UploadController@index');
 Route::post('store', 'UploadController@store');
-Route::get('show', 'UploadController@show');
-// Route::post('store', function ($file)
-// {
-//     $path = storage_path('public/' . $file);
+// Route::get('show', 'UploadController@show');
+Route::get('store', 'UploadController@index');
 
-//     if (!File::exists($path)) {
-//         abort(404);
-//     }
-
-//     $file = File::get($path);
-//     $type = File::mimeType($path);
-
-//     $response = Response::make($file, 200);
-//     $response->header("Content-Type", $type);
-
-//     return $response;
-// });
 

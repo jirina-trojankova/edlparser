@@ -26,6 +26,7 @@
     </style>
 </head>
 <body>
+    Store blade
     <table>
         <tr>
             <th>File name</th>
@@ -71,8 +72,5 @@ foreach ($file as $row) {
 }
         ?>
     </table>    
-    This is store.blade
-    <img src="{{ asset ('storage/' . $path) }}">
-    <img src="{{ 'storage/' . $path }}">
 </body>
 </html>
