@@ -60,7 +60,8 @@
             text-decoration: none;
             text-transform: uppercase;
         }
-         table {
+
+        table {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
             border-collapse: collapse;
             width: 100%;
@@ -77,9 +78,30 @@
         tr:nth-child(even) {
             background-color: #dddddd;
         }
+
+        .strong {
+            font-weight: bold;
+        }
     </style>
 </head>
+
 <body>
-@yield('content')
+    <div class="content">
+        <div class="title m-b-md">
+            EDL Parser
+        </div>
+        <div>
+                {!! Form::open(['url' => '/store', 'method' => 'post', 'files' => true]) !!} 
+                File name:
+                {!! Form::text('episode') !!}  
+                <br>
+                {!! Form::file('file'); !!} 
+                {!! Form::submit('Upload File') !!} 
+                {!! Form::token() !!}
+                {!! Form::close() !!}
+            </div>
+        @yield('content')
+    </div>
 </body>
+
 </html>
