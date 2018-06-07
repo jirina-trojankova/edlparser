@@ -15,70 +15,69 @@ class UploadController extends Controller
     }
     
     public static function store (){
-
-        if (Input::has('name')) {
-            $name = Input::get('name');
+        $name = Input::get('name');
+        if ($name !== null) {
             echo '<p class="strong">Epizode name: ' . $name . '</p>';
-        } else {
-            echo  '<p class="strong">File name: ' . $filename . '</p>';
-        }   
-
-        if (Input::hasFile('file')){
+            if (Input::hasFile('file')){
             
-            $file = Input::file('file');
-
-            $destinationPath = public_path(). '/uploads/';
-            $filename = $file->getClientOriginalName();
-
-            $file->move($destinationPath, $name);
-
-            $path = 'uploads/' . $name;
-
-            echo '<table>';
-            echo '<tr>';
-            echo '<th>File name</th>';
-            echo '<th>Album code</th>';
-            echo '<th>Track no</th>';
-            echo '<th>Track name</th>';
-            echo '<th>Duration</th>';
-            echo '</tr>';
-
-            $file = file($path);
-            $unmuted = 'Unmuted';
-            foreach ($file as $row) {
-                //if row contains word unmuted it means it should be listed
-                if ((strpos ($row, $unmuted) !== false) && (substr($row, 0, 1) !== "2")) {
-                    //replace several whitespaces by one
-                    $string = preg_replace('/\s+/', ' ', $row);
-                    //divides row into columns
-                    list($col1, $col2, $col3, $col4, $col5, $col6, $col7) = explode(' ', $string);
-                    //removes .L
-                    $col3 = chop($col3, ".L");
-                    //removes hours
-                    $col6 = substr($col6, 3);
-                    //round up ms
-                    $substr = substr($col6, 0, -2);
-                    if ($substr !== 00) {
-                        $col6 = substr($col6, 0, -3);
-                        //add 1 to the last character
-                        $i = substr($col6, -2);
-                        //if last two characters !contain 0, remove last three characters and add 1 to the last character
-                        $col6 = substr($col6, 0, -2);
-                        $i++;
-                        $col6 .= $i;
-                    } else {
-                        //...else remove last three characters
-                        $col6 = substr($col6, 0, -3);
+                $file = Input::file('file');
+    
+                $destinationPath = public_path(). '/uploads/';
+                $filename = $file->getClientOriginalName();
+    
+                $file->move($destinationPath, $name);
+    
+                $path = 'uploads/' . $name;
+    
+                echo '<table>';
+                echo '<tr>';
+                echo '<th>File name</th>';
+                echo '<th>Album code</th>';
+                echo '<th>Track no</th>';
+                echo '<th>Track name</th>';
+                echo '<th>Duration</th>';
+                echo '</tr>';
+    
+                $file = file($path);
+                $unmuted = 'Unmuted';
+                foreach ($file as $row) {
+                    //if row contains word unmuted it means it should be listed
+                    if ((strpos ($row, $unmuted) !== false) && (substr($row, 0, 1) !== "2")) {
+                        //replace several whitespaces by one
+                        $string = preg_replace('/\s+/', ' ', $row);
+                        //divides row into columns
+                        list($col1, $col2, $col3, $col4, $col5, $col6, $col7) = explode(' ', $string);
+                        //removes .L
+                        $col3 = chop($col3, ".L");
+                        //removes hours
+                        $col6 = substr($col6, 3);
+                        //round up ms
+                        $substr = substr($col6, 0, -2);
+                        if ($substr !== 00) {
+                            $col6 = substr($col6, 0, -3);
+                            //add 1 to the last character
+                            $i = substr($col6, -2);
+                            //if last two characters !contain 0, remove last three characters and add 1 to the last character
+                            $col6 = substr($col6, 0, -2);
+                            $i++;
+                            $col6 .= $i;
+                        } else {
+                            //...else remove last three characters
+                            $col6 = substr($col6, 0, -3);
+                        }
+                        //corrects time format
+                        if (strlen($col6) !== 5) {
+                            $col6 = substr_replace($col6, '0',3 ,0);
+                        }
+                        echo '<tr><th>' . $col3 . '</th><th>' . $col3 . '</th><th>' . $col2 . '</th><th>' . $col3 . '</th><th>' . $col6 . '</th></tr>';
                     }
-                    //corrects time format
-                    if (strlen($col6) !== 5) {
-                        $col6 = substr_replace($col6, '0',3 ,0);
-                    }
-                    echo '<tr><th>' . $col3 . '</th><th>' . $col3 . '</th><th>' . $col2 . '</th><th>' . $col3 . '</th><th>' . $col6 . '</th></tr>';
                 }
+                echo '</table>';
+            } else {
+                echo '<p class="strong">Please attach the file.</p>';
             }
-            echo '</table>';
-        }
-        
+        } else {
+            echo  '<p class="strong">You need to fill in episode name.</p>';
+        }    
     }
 }
