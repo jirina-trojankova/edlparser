@@ -8,7 +8,7 @@
             {!! Form::open(['url' => '/store', 'method' => 'post', 'files' => true]) !!} 
             File name:
             {!! Form::text('episode') !!}  
-            <br />
+            <br>
             {!! Form::file('file'); !!} 
             {!! Form::submit('Upload File') !!} 
             {!! Form::token() !!}

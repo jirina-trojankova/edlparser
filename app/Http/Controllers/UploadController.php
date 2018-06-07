@@ -11,10 +11,12 @@ class UploadController extends Controller
 {
     public function index ()
     {
-        return view ('welcome');
+        return view ('upload');
     }
-
-    public function store (){
+    public static function test(){
+        echo 'test';
+    }
+    public static function store (){
 
         If(Input::hasFile('file')){
             

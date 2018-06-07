@@ -12,9 +12,11 @@
 */
 use Illuminate\Http\Request;
 
-Route::get('/', 'UploadController@index');
-Route::post('store', 'UploadController@store');
-// Route::get('show', 'UploadController@show');
-Route::get('store', 'UploadController@index');
+Route::get('/', function () {
+    return view('welcome');
+});
+// Route::get('/', 'UploadController@index');
+Route::post('store', 'UploadController@index');
+// Route::post('store', 'UploadController@store');
 
 
