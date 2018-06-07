@@ -17,19 +17,18 @@ class UploadController extends Controller
     public static function store (){
         $name = Input::get('name');
         if ($name !== null) {
-        
+            $ext = Input::get('ext');
             $name = Input::get('name');
-            echo '<p class="strong">Epizode name: ' . $name . '</p>';
+            echo '<p class="strong">Epizode name: ' . $name . '.' . $ext . '</p>';
             if (Input::hasFile('file')){
             
                 $file = Input::file('file');
-    
+                $filename = $name . '.' . $ext;
                 $destinationPath = public_path(). '/uploads/';
-                $filename = $file->getClientOriginalName();
     
-                $file->move($destinationPath, $name);
+                $file->move($destinationPath, $filename);
     
-                $path = 'uploads/' . $name;
+                $path = 'uploads/' . $filename;
     
                 echo '<table>';
                 echo '<tr>';
