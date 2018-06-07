@@ -30,10 +30,9 @@ class UploadController extends Controller
             $destinationPath = public_path(). '/uploads/';
             $filename = $file->getClientOriginalName();
 
-            $file->move($destinationPath, $filename);
-            
+            $file->move($destinationPath, $name);
 
-            $path = 'uploads/' . $filename;
+            $path = 'uploads/' . $name;
 
             echo '<table>';
             echo '<tr>';
@@ -80,5 +79,6 @@ class UploadController extends Controller
             }
             echo '</table>';
         }
+        
     }
 }
