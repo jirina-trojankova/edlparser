@@ -65,7 +65,7 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
             border-collapse: collapse;
             width: 100%;
-            /* font-weight: bold; */
+            font-weight: normal;
         }
 
         td,
@@ -87,13 +87,13 @@
 
 <body>
     <div class="content">
-        <div class="title m-b-md">
+        <div class="title">
             EDL Parser
         </div>
-        <div>
+        <div class="strong">
                 {!! Form::open(['url' => '/store', 'method' => 'post', 'files' => true]) !!} 
-                File name:
-                {!! Form::text('episode') !!}  
+                {!! 'Epizode name: ' !!}
+                {!! Form::text('name') !!}  
                 <br>
                 {!! Form::file('file'); !!} 
                 {!! Form::submit('Upload File') !!} 

@@ -16,7 +16,14 @@ class UploadController extends Controller
     
     public static function store (){
 
-        If(Input::hasFile('file')){
+        if (Input::has('name')) {
+            $name = Input::get('name');
+            echo '<p class="strong">Epizode name: ' . $name . '</p>';
+        } else {
+            echo  '<p class="strong">File name: ' . $filename . '</p>';
+        }   
+
+        if (Input::hasFile('file')){
             
             $file = Input::file('file');
 
@@ -24,14 +31,14 @@ class UploadController extends Controller
             $filename = $file->getClientOriginalName();
 
             $file->move($destinationPath, $filename);
+            
 
-            echo  '<p class="strong">File name: ' . $filename . '</p><br>';
             $path = 'uploads/' . $filename;
 
             echo '<table>';
             echo '<tr>';
-            echo '    <th>File name</th>';
-            echo '    <th>Album code</th>';
+            echo '<th>File name</th>';
+            echo '<th>Album code</th>';
             echo '<th>Track no</th>';
             echo '<th>Track name</th>';
             echo '<th>Duration</th>';
@@ -57,11 +64,11 @@ class UploadController extends Controller
                         //add 1 to the last character
                         $i = substr($col6, -2);
                         //if last two characters !contain 0, remove last three characters and add 1 to the last character
-                        //...else remove last three characters
                         $col6 = substr($col6, 0, -2);
                         $i++;
                         $col6 .= $i;
                     } else {
+                        //...else remove last three characters
                         $col6 = substr($col6, 0, -3);
                     }
                     //corrects time format
