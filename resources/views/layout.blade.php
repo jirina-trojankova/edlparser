@@ -94,6 +94,7 @@
                 {!! Form::open(['url' => '/store', 'method' => 'post', 'files' => true]) !!} 
                 {!! 'Epizode name: ' !!}
                 {!! Form::text('name') !!}  
+                {!! Form::select('size', array('txt' => 'txt', 'edl' => 'edl'), 'txt') !!}  
                 <br>
                 {!! Form::file('file'); !!} 
                 {!! Form::submit('Upload File') !!} 

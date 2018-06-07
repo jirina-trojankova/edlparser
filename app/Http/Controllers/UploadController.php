@@ -17,6 +17,8 @@ class UploadController extends Controller
     public static function store (){
         $name = Input::get('name');
         if ($name !== null) {
+        
+            $name = Input::get('name');
             echo '<p class="strong">Epizode name: ' . $name . '</p>';
             if (Input::hasFile('file')){
             
