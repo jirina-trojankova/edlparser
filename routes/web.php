@@ -15,8 +15,7 @@ use Illuminate\Http\Request;
 Route::get('/', function () {
     return view('welcome');
 });
-// Route::get('/', 'UploadController@index');
+
 Route::post('store', 'UploadController@index');
-// Route::post('store', 'UploadController@store');
 
 
