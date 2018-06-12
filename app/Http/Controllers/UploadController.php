@@ -53,15 +53,26 @@ class UploadController extends Controller
                         list($col1, $col2, $col3, $col4, $col5, $col6, $col7) = explode(' ', $string);
                         //removes .L
                         $col3 = chop($col3, ".L");
+  
+                        if(preg_match('/^([A-Z]+[0-9]+)_([0-9]+)-(.*)/si', $col3, $matches)) {
+                            $album_code = $matches[1];
+                            $track_no = $matches[2];
+                            $track_name = $matches[3];
+                        }else{
+                            $album_code = null;
+                            $track_no = null;
+                            $track_name = $col3;
+                        }
+
                         //removes hours
                         $col6 = substr($col6, 3);
                         //round up ms
                         $substr = substr($col6, 0, -2);
+                        //if last two characters !contain 0, remove last three characters and add 1 to the last character
                         if ($substr !== 00) {
                             $col6 = substr($col6, 0, -3);
                             //add 1 to the last character
                             $i = substr($col6, -2);
-                            //if last two characters !contain 0, remove last three characters and add 1 to the last character
                             $col6 = substr($col6, 0, -2);
                             $i++;
                             $col6 .= $i;
@@ -73,7 +84,7 @@ class UploadController extends Controller
                         if (strlen($col6) !== 5) {
                             $col6 = substr_replace($col6, '0',3 ,0);
                         }
-                        echo '<tr><th>' . $col3 . '</th><th>' . $col3 . '</th><th>' . $col2 . '</th><th>' . $col3 . '</th><th>' . $col6 . '</th></tr>';
+                        echo '<tr><th>' . $col3 . '</th><th>' . $album_code . '</th><th>' . $track_no . '</th><th>' . $track_name . '</th><th>' . $col6 . '</th></tr>';
                     }
                 }
                 echo '</table>';
