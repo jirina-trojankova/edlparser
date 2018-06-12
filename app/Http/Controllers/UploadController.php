@@ -14,7 +14,7 @@ class UploadController extends Controller
         return view ('upload');
     }
     
-    public static function store (){
+    public static function parse (){
         $name = Input::get('name');
         if ($name !== null) {
             $ext = Input::get('ext');
@@ -39,13 +39,26 @@ class UploadController extends Controller
                 echo '<th>Album code</th>';
                 echo '<th>Track no</th>';
                 echo '<th>Track name</th>';
-                echo '<th>Duration</th>';
+                echo '<th>Duration [m:ss]</th>';
                 echo '</tr>';
     
                 $file = file($path);
+
+                //chooses Audio Clip
+                $file = implode("|",$file);
+                $file = explode("TRACK NAME:", $file);
+                foreach ($file as $index => $tag) {
+                    if (strpos($tag, 'Audio') === false) {
+                        unset($file[$index]);
+                    }
+                }
+                $file = implode("", $file);
+                $file = explode("|", $file);
+
+                //lists tracks in a table
                 $unmuted = 'Unmuted';
                 foreach ($file as $row) {
-                    //if row contains word unmuted it means it should be listed
+                    //unmuted tracks and channel 1
                     if ((strpos ($row, $unmuted) !== false) && (substr($row, 0, 1) !== "2")) {
                         //replace several whitespaces by one
                         $string = preg_replace('/\s+/', ' ', $row);
@@ -53,7 +66,7 @@ class UploadController extends Controller
                         list($col1, $col2, $col3, $col4, $col5, $col6, $col7) = explode(' ', $string);
                         //removes .L
                         $col3 = chop($col3, ".L");
-  
+                        //parses from filename
                         if(preg_match('/^([0-9]*[A-Z]+[0-9]+)_([0-9]+)-(.*)/si', $col3, $matches)) {
                             $album_code = $matches[1];
                             $track_no = $matches[2];
@@ -68,9 +81,10 @@ class UploadController extends Controller
                         //removes hours
                         $col6 = substr($col6, 3);
                         //round up ms
-                        $substr = substr($col6, 0, -2);
+                        //gets last two chars
+                        $substr = substr($col6, -2);
                         //if last two characters !contain 0, remove last three characters and add 1 to the last character
-                        if ($substr !== 00) {
+                        if ($substr !== '00') {
                             $col6 = substr($col6, 0, -3);
                             //add 1 to the last character
                             $i = substr($col6, -2);
