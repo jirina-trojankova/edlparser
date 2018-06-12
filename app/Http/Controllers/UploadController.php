@@ -54,7 +54,7 @@ class UploadController extends Controller
                         //removes .L
                         $col3 = chop($col3, ".L");
   
-                        if(preg_match('/^([A-Z]+[0-9]+)_([0-9]+)-(.*)/si', $col3, $matches)) {
+                        if(preg_match('/^([0-9]*[A-Z]+[0-9]+)_([0-9]+)-(.*)/si', $col3, $matches)) {
                             $album_code = $matches[1];
                             $track_no = $matches[2];
                             $track_name = $matches[3];
