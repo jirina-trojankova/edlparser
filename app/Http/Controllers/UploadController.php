@@ -58,6 +58,7 @@ class UploadController extends Controller
                             $album_code = $matches[1];
                             $track_no = $matches[2];
                             $track_name = $matches[3];
+                            $track_name = preg_replace('/[^a-zA-Z]/', ' ', $track_name);
                         }else{
                             $album_code = null;
                             $track_no = null;
